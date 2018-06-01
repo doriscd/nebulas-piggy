@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+
+    <title>Nebulas Piggy</title>
+    <link rel="stylesheet" href="lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-4.0.0-dist/css/bootstrap-datetimepicker.min.css">
+    <style>
+          .contenner{
+              background: url("img/bg.jpg");
+              height: 1000px;
+              background-repeat:no-repeat;
+              background-size:100% 100%
+          }
+
+        .name {
+            text-align: center;
+            font-size: 66px;
+            text-shadow: 3px 5px grey, 1px 1px #333;
+        }
+        .main{
+          height: 800px;
+        }
+        .user{
+          padding-top:100px;
+          padding-left: 40%;
+          height: 600px;
+        }
+        .footer{
+          padding-left: 40%;
+        }
+        .modal_input{
+          width: 60%;
+        }
+
+        .hide{
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="contenner">
+    <div>
+      <img src="img/logo_s.png" alt="">
+    </div>
+    <div class="name">Nebulas Piggy</div>
+    <div class="main">
+        <div class="noExtension hide" id="noExtension">
+            NOTE: Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>  to use SUPER DICTIONARY
+        </div>
+        <div class="user">
+         <button class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Create My Piggy</button>
+         <button class="btn btn-info" data-toggle="modal" data-target="#myModalView">View My Piggy</button><br/><br/><br/>
+         <button class="btn btn-success" data-toggle="modal" data-target="#myModalDeposit">　　　　　　Deposit　　　　　　</button><br/><br/><br/>
+         <button class="btn btn-info" id="withdraw" >Withdraw　</button>
+         <button class="btn btn-danger" id="crashPiggy" >Advance withdrawal</button>
+        </div>
+        <div class="footer">
+            Copyright © 2018-2118: dorischengdan@gmail.com
+        </div>
+  </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          Create My Piggy
+        </h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+        <form class="bs-example bs-example-form" role="form">
+      		<div class="input-group">
+      			<span class="input-group-addon" data-toggle="tooltip" title="Amount Target" >Amount Target:</span>
+      			<input type="text" id="target" class="form-control" >
+      		</div><br/>
+          <div class="input-group">
+            <span class="input-group-addon" data-toggle="tooltip" title="Withdraw Date" >withdraw Date:</span>
+            <input type="text" id="endTime" class="form-control" >
+          </div><br/>
+          <div class="input-group">
+            <span class="input-group" data-toggle="tooltip" title="Description" >Description:</span>
+            <input type="text" id="desc" class="form-control" >
+          </div><br/>
+      	</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
+				</button>
+				<button type="button" id="submit_create" class="btn btn-primary">
+					Submit
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          View My Piggy
+        </h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+        <form class="bs-example bs-example-form" role="form">
+      		<div class="input-group">
+      			<span class="input-group-addon" data-toggle="tooltip" title="Wallet Address" >Wallet Address:</span>
+      			<input type="text" id="user" class="form-control" >
+      		</div><br/>
+      	</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
+				</button>
+				<button type="button" id="submit_view" class="btn btn-primary">
+					Submit
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModalDeposit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          View My Piggy
+        </h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+        <form class="bs-example bs-example-form" role="form">
+      		<div class="input-group">
+      			<span class="input-group-addon" data-toggle="tooltip" title="Wallet Address" >Deposit Value:</span>
+      			<input type="text" id="deposit" class="form-control" >
+      		</div><br/>
+      	</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
+				</button>
+				<button type="button" id="submit_deposit" class="btn btn-primary">
+					Submit
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<div class="modal fade" id="showData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          My Piggy
+        </h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+				<P id="myPiggy"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<script src=lib/jquery-3.3.1.min.js></script>
+<script src=lib/nebPay.js></script>
+<script src=lib/bootstrap-4.0.0-dist/js/bootstrap.min.js></script>
+<script src=lib/nebulas.js></script>
+<script src=lib/bootstrap-datetimepicker.min.js></script>
+<script>
+
+    "use strict";
+
+    $('#endTime').datetimepicker({
+        format: 'yyyy-mm-dd',//显示格式
+        minView: "month",//设置只显示到月份
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+    //to check if the extension is installed
+    //if the extension is installed, var "webExtensionWallet" will be injected in to web page
+    if(typeof(webExtensionWallet) === "undefined"){
+        //alert ("Extension wallet is not installed, please install it first.")
+        $("#noExtension").removeClass("hide")
+    }
+
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+
+    var dappAddress = "n1jxFfy3BsTYtxUAVAQ7fgLajjRK8UdUtzo";
+
+    //here we use neb.js to call the "get" function to search from the Dictionary
+    var nebulas = require("nebulas"),
+        Account = nebulas.Account,
+        neb = new nebulas.Neb();
+     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    // neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+    var from = Account.NewAccount().getAddressString();
+    var value = "0";
+    var nonce = "0"
+    var gas_price = "1000000"
+    var gas_limit = "2000000"
+    var callFunction = "";
+    var callArgs = "[]";
+    var contract = {
+        "function": callFunction,
+        "args": callArgs
+    };
+     $("#submit_view").click(function(){
+       $('.modal').modal('hide');
+       view();
+     });
+    function view(){
+      var user = $("#user").val();
+      if(!user){
+        alert("Wallet Address is empty");
+        return false;
+      }
+      console.log(user);
+      var from = user;
+      var callFunction = "check";
+      var callArgs = "[\""+ user +"\"]";
+      var contract = {
+          "function": callFunction,
+          "args": callArgs
+      };
+      neb.api.call(from,dappAddress,value,nonce,gas_price,gas_limit,contract).then(function (resp) {
+         try{
+           setPiggy(resp);
+           console.log(resp);
+         }catch(err){
+          alert(resp.result);
+         }
+      }).catch(function (err) {
+         alert(err);
+          // console.log("error:" + err.message);
+      });
+    }
+
+    function setPiggy(resp){
+      var result = resp.result;
+      result = JSON.parse(result);
+      var endTime = new Date(result.endTime * 1000);
+      var startTime = new Date(result.startTime * 1000);
+
+      var html= "";
+      html += "<h6>Amount target:</h6>" + result.target +" NAS<br/>";
+      html += "<h6>Amount deposit:</h6>" + result.deposit/1000000000000000000 +" NAS<br/>";
+      html += "<h6>Start time:</h6>" + startTime +"<br/>";
+      html += "<h6>End time:</h6>" + endTime +"<br/>";
+      html += "<h6>Description:</h6>" + result.desc +"<br/>";
+      $("#myPiggy").html(html);
+      $("#showData").modal("show");
+    };
+     //给合约增加随机加密参数
+     var NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
+     var nebPay = new NebPay();
+     var serialNumber;
+     var intervalQuery;
+     var to = dappAddress;
+  $("#submit_create").click(function(){
+       submitCreate();
+    });
+  $("#submit_deposit").click(function(){
+    deposit();
+  });
+  $("#withdraw").click(function(){
+    alert("The withdrawal shall be successed when this transaction is successed");
+    withdraw();
+  });
+  $("#crashPiggy").click(function(){
+    var flag = confirm("Are you sure to withdraw Advance? it will cost 5% of your deposit!");
+    if(!flag){
+      return false;
+    }
+    alert("The withdrawal shall be successed when this transaction is successed");
+    crashPiggy();
+  });
+
+  var serialNumber;
+  var intervalQuery;
+  function submitCreate(){
+    var value = "0";
+    var callFunction = "createPiggy";
+    var target=$("#target").val();
+    target = Number(target);
+    if(isNaN(target)){
+      alert("Amount target should be a number");
+      return false;
+    }
+    if(target <= 0){
+      alert("Amount target should bigger then zero");
+      return false;
+    }
+    var endTime = $("#endTime").val();
+    endTime = Date.parse(new Date(endTime));
+    endTime = endTime/1000;
+    var now = Date.parse(new Date());
+    now = now/1000;
+    if(endTime <= now){
+      alert("withdraw Date should be in the future!");
+      return false;
+    }
+    var desc = $("#desc").val();
+    $('.modal').modal('hide');
+    alert("The piggy shall be created when this transaction was successed");
+    var callArgs = "[\""+target+"\",\""+endTime+"\",\""+desc+"\"]";
+    serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+        listener: function (resp) {
+                console.log("response of push: " + JSON.stringify(resp));
+            },       //设置listener, 处理交易返回信息
+    });
+
+    intervalQuery = setInterval(function () {
+        funcIntervalQuery("createPiggy");
+    }, 5000);
+  }
+  function deposit(){
+    var callFunction = "deposit";
+    var value=$("#deposit").val();
+    value = Number(value);
+    if(isNaN(value)){
+      alert("deposit value should be a number");
+      return false;
+    }
+    $('.modal').modal('hide');
+    alert("The deposit shall be successed when this transaction was successed");
+    var callArgs = "[]";
+    serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+        listener: function (resp) {
+                console.log("response of push: " + JSON.stringify(resp));
+            },       //设置listener, 处理交易返回信息
+    });
+
+    intervalQuery = setInterval(function () {
+        funcIntervalQuery("deposit");
+    }, 5000);
+  }
+  function withdraw(){
+    var callFunction = "withdraw";
+    var callArgs = "[]";
+    serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+        listener: function (resp) {
+                console.log("response of push: " + JSON.stringify(resp));
+            },       //设置listener, 处理交易返回信息
+    });
+
+    intervalQuery = setInterval(function () {
+        funcIntervalQuery("withdraw");
+    }, 5000);
+  }
+  function crashPiggy(){
+    var callFunction = "crashPiggy";
+    var callArgs = "[]";
+    serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+        listener: function (resp) {
+                console.log("response of push: " + JSON.stringify(resp));
+            },       //设置listener, 处理交易返回信息
+    });
+
+    intervalQuery = setInterval(function () {
+        funcIntervalQuery("crashPiggy");
+    }, 5000);
+  }
+
+    function funcIntervalQuery(action) {
+        nebPay.queryPayInfo(serialNumber)   //search transaction result from server (result upload to server by app)
+            .then(function (resp) {
+                console.log("tx result: " + resp)   //resp is a JSON string
+               var respObject = JSON.parse(resp);
+                if(respObject.code === 0){
+                       if(respObject.data.status == 1){
+                          if(action ==="createPiggy"){
+                            alert("Create Piggy Success！");
+                          }else if(action ==="deposit"){
+                              alert("Deposit Success!");
+                          }else if(action ==="withdraw"||action ==="crashPiggy"){
+                              alert("Withdraw Success!");
+                          }
+                          clearInterval(intervalQuery);
+                       }
+                }
+            })
+            .catch(function (err) {
+                alert(err);
+            });
+    }
+
+</script>
+</body>
+
+</html>
