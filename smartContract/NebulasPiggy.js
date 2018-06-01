@@ -64,9 +64,8 @@ var PiggyBank = function () {
 
 PiggyBank.prototype = {
     init: function () {
-				this.admin = "n1REg7nvceEDrhiHinp4DspDrkKtCf3Tg95";
-				this.adminRate = 0.005;
-				this.supRate = 0.05;
+				this.admin = "n1ZtnTuU6PiyUDy4cF6cDYYJczD3DvD81FK";
+				this.crashRate = 0.05;
     },
 
     setRate:function(crashRate){

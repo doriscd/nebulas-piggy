@@ -215,14 +215,14 @@
 
     $(function () { $("[data-toggle='tooltip']").tooltip(); });
 
-    var dappAddress = "n1jxFfy3BsTYtxUAVAQ7fgLajjRK8UdUtzo";
+     var dappAddress = "n1jxFfy3BsTYtxUAVAQ7fgLajjRK8UdUtzo";
 
     //here we use neb.js to call the "get" function to search from the Dictionary
     var nebulas = require("nebulas"),
         Account = nebulas.Account,
         neb = new nebulas.Neb();
-     neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
-    // neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+     // neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
     var from = Account.NewAccount().getAddressString();
     var value = "0";
     var nonce = "0"
