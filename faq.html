@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+
+    <title>Nebulas Piggy</title>
+    <link rel="stylesheet" href="lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-4.0.0-dist/css/bootstrap-datetimepicker.min.css">
+    <style>
+          .contenner{
+              background: url("img/bg.jpg");
+              height: 1000px;
+              background-repeat:no-repeat;
+              background-size:100% 100%
+          }
+
+        .name {
+            text-align: center;
+            font-size: 66px;
+            text-shadow: 3px 5px grey, 1px 1px #333;
+        }
+        .main{
+          height: 800px;
+        }
+        .user{
+          padding-top:20px;
+          padding-left: 10%;
+          padding-right:20%;
+          height: 600px;
+        }
+        .helper{
+          padding-left: 90%;
+        }
+        .footer{
+          padding-left: 40%;
+        }
+        .modal_input{
+          width: 60%;
+        }
+
+        .hide{
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="contenner">
+    <div>
+      <img src="img/logo_s.png" alt="">
+    </div>
+    <div class="name">Nebulas Piggy</div>
+    <div class="main">
+        <div class="noExtension hide" id="noExtension">
+            NOTE: Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>  to use SUPER DICTIONARY
+        </div>
+        <div class="user">
+         <div class="helper" >
+           <a href="./index.html" target="_blank" >Home»</a>
+         </div>
+          <ul>
+          <li><b>1. what is Nebulas Piggy?（星云小猪是什么？）</b><br/>
+            Nebulas Piggy is an simple and useful piggy bank, that you can save and withdraw Nas according the plan you have made.<br/>
+           （星云小猪是一个简单好用的小猪存钱罐，你可以安州你的计划存取Nas。)
+         </li><br/>
+        <li><b>2. How to use it？（怎么使用？）</b><br/>
+          <button class="btn-sm btn-primary">Create My Piggy</button><br/>
+          Create My Piggy, fill in the infromation of your piggy and click this button and send the transaction successfully, then you can create your own piggy bank.<br/>
+          点击创建地址对应的小猪存钱罐，需要填写目标存款数，取款日期，以及描述，发送交易成功后即已成功创建。<br>
+          <button class="btn-sm btn-info" >View My Piggy</button><br/>
+          Fill in your wallet address so you can view & check your piggy bank information.<br/>
+          点击输入自己的钱包地址，即可查看对应的小猪存钱罐信息。（如已存入数目等）<br/>
+          <button class="btn-sm btn-success" >　　　　　　Deposit　　　　　　</button><br/>
+          Fill in the number of nas which you want to deposit, send the transaction successfully, then your piggy bank's deposit will update.<br/>
+          点击输入要存入的金额数（Nas),发送交易并成功后即表明已存入，也可以通过上一步查看信息。<br/>
+          <button class="btn-sm btn-info" >Withdraw　</button><br/>
+          When you reach any of your goal (target amount of deposit or withdraw date), you can click this and send the transaction successfully ,then your deposit will be withdrawed.<br/>
+          取款，当达成任意的目标（如目标存款数或取款日期） 即可取款，只收取交易的gas费用。<br/>
+          <button class="btn-sm btn-danger" >Advance withdrawal</button><br/>
+           When you don't reach any of your goal,you can also withdraw your deposit Nas, but it's will cost 5% of the deposit!<br/>
+           提前取款，当还没有达成任何目标但需要取款情形，但需要耗费5%的存款金额，请认真对待自己的计划哦。<br/>
+       </li><br/>
+       <li><b>3. where is the contract?(查看合约信息)</b><br/>
+          <a data-v-018203d0="" href="https://explorer.nebulas.io/#/address/n1jxFfy3BsTYtxUAVAQ7fgLajjRK8UdUtzo" target="_blank">n1jxFfy3BsTYtxUAVAQ7fgLajjRK8UdUtzo</a>
+       </li><br/>
+       <li><b>4. Contact us</b><br/>
+         dorischengdan@gmail
+       </li>
+     </ul>
+        </div>
+        <!-- <div class="footer">
+            Copyright © 2018-2118: dorischengdan@gmail.com
+        </div> -->
+  </div>
+</div>
+
+<script src=lib/jquery-3.3.1.min.js></script>
+<script src=lib/nebPay.js></script>
+<script src=lib/bootstrap-4.0.0-dist/js/bootstrap.min.js></script>
+<script src=lib/nebulas.js></script>
+<script src=lib/bootstrap-datetimepicker.min.js></script>
+<script>
+
+    "use strict";
+
+</script>
+</body>
+
+</html>
