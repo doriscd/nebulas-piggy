@@ -129,7 +129,7 @@ PiggyBank.prototype = {
 
 			var endTime =piggy.endTime;
 			var now = Blockchain.transaction.timestamp;
-			if( target > deposit || endTime > now){
+			if( target > deposit && endTime > now){
 				throw new Error("sorry, your plan has not been finish yet.");
 			}
 
