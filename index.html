@@ -90,15 +90,15 @@
         <form class="bs-example bs-example-form" role="form">
       		<div class="input-group">
       			<span class="input-group-addon" data-toggle="tooltip" title="Amount Target" >Amount Target:</span>
-      			<input type="text" id="target" class="form-control" >
+      			<input type="text" id="target" class="form-control" placeholder="Number of Goal Deposit (NAS) 存款目标总额">
       		</div><br/>
           <div class="input-group">
             <span class="input-group-addon" data-toggle="tooltip" title="Withdraw Date" >withdraw Date:</span>
-            <input type="text" id="endTime" class="form-control" >
+            <input type="text" id="endTime" class="form-control" placeholder="Date of withdraw 计划取款日期" >
           </div><br/>
           <div class="input-group">
             <span class="input-group" data-toggle="tooltip" title="Description" >Description:</span>
-            <input type="text" id="desc" class="form-control" >
+            <input type="text" id="desc" class="form-control"  placeholder="Describe your plan，描述你的计划">
           </div><br/>
       	</form>
 			</div>
@@ -128,7 +128,7 @@
         <form class="bs-example bs-example-form" role="form">
       		<div class="input-group">
       			<span class="input-group-addon" data-toggle="tooltip" title="Wallet Address" >Wallet Address:</span>
-      			<input type="text" id="user" class="form-control" >
+      			<input type="text" id="user" class="form-control" placeholder="enter your address，输入钱包地址">
       		</div><br/>
       	</form>
 			</div>
@@ -147,7 +147,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
         <h4 class="modal-title" id="myModalLabel">
-          View My Piggy
+          Deposit into My Piggy
         </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
@@ -157,7 +157,7 @@
         <form class="bs-example bs-example-form" role="form">
       		<div class="input-group">
       			<span class="input-group-addon" data-toggle="tooltip" title="Wallet Address" >Deposit Value:</span>
-      			<input type="text" id="deposit" class="form-control" >
+      			<input type="text" id="deposit" class="form-control" placeholder="Number of deposit(Nas)，输入存款NAS">
       		</div><br/>
       	</form>
 			</div>
@@ -299,15 +299,15 @@
     deposit();
   });
   $("#withdraw").click(function(){
-    alert("The withdrawal shall be successed when this transaction is successed");
+    alert("The withdrawal shall be successed when the transaction is successed \n 当发送此交易成功后取款即成功！");
     withdraw();
   });
   $("#crashPiggy").click(function(){
-    var flag = confirm("Are you sure to withdraw Advance? it will cost 5% of your deposit!");
+    var flag = confirm("Are you sure to withdraw Advance? it will cost 5% of your deposit!\n 您确定提前计划取出吗？ 这将会耗费5%的存款！");
     if(!flag){
       return false;
     }
-    alert("The withdrawal shall be successed when this transaction is successed");
+    alert("The withdrawal shall be successed when the transaction is successed \n 当发送此交易成功后取款即成功！");
     crashPiggy();
   });
 
@@ -319,11 +319,11 @@
     var target=$("#target").val();
     target = Number(target);
     if(isNaN(target)){
-      alert("Amount target should be a number");
+      alert("Amount target should be a number\n 金额应该是数字！");
       return false;
     }
     if(target <= 0){
-      alert("Amount target should bigger then zero");
+      alert("Amount target should bigger then zero\n 金额应该大于0");
       return false;
     }
     var endTime = $("#endTime").val();
@@ -332,12 +332,12 @@
     var now = Date.parse(new Date());
     now = now/1000;
     if(endTime <= now){
-      alert("withdraw Date should be in the future!");
+      alert("withdraw Date should be in the future!\n 日期应该在未来的时间里");
       return false;
     }
     var desc = $("#desc").val();
     $('.modal').modal('hide');
-    alert("The piggy shall be created when this transaction was successed");
+    alert("The piggy shall be created when this transaction was successed\n 您的星云小猪将在此交易发送成功后创建！");
     var callArgs = "[\""+target+"\",\""+endTime+"\",\""+desc+"\"]";
     serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
         listener: function (resp) {
@@ -354,11 +354,11 @@
     var value=$("#deposit").val();
     value = Number(value);
     if(isNaN(value)){
-      alert("deposit value should be a number");
+      alert("deposit value should be a number\n 存款金额应该是数字");
       return false;
     }
     $('.modal').modal('hide');
-    alert("The deposit shall be successed when this transaction was successed");
+    alert("The deposit shall be successed when the transaction was successed\n 当发送此交易成功后即成功存款！");
     var callArgs = "[]";
     serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
         listener: function (resp) {
